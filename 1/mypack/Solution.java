@@ -21,8 +21,16 @@ public class Solution {
 		int n = scanner.nextInt();
 		scanner.skip("(\r\n|[\n\r\u2028\u2029\u0085])?");
 
-		StairsBuilder stairs = new StairsBuilder();
-		stairs.output(n);	
+		System.out.println(Thread.currentThread().getName());
+
+		new Thread(
+			() -> {
+				StairsBuilder stairs = new StairsBuilder();
+				stairs.output(n);
+			}
+			).start();
+		
+		scanner.close();
 	}
 
 }
